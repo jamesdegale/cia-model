@@ -90,18 +90,7 @@
     <span>Yellow balance = CIA owes Clark · Green balance = CIA is ahead</span>
   </div>
 </div>
-<script>
-function checkPassword() {
-  if (document.getElementById('pw-input').value === 'clark') {
-    document.getElementById('password-gate').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-  } else {
-    document.getElementById('pw-error').textContent = 'Incorrect password.';
-    document.getElementById('pw-input').value = '';
-  }
-}
-document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
-</script>
+
 <script>
 const NUM_YEARS = 10;
 
@@ -560,6 +549,18 @@ render();
 
 window.addEventListener('resize', () => { initChart(); render(); });
 </script>
-
+</div>
+<script>
+function checkPassword() {
+  if (document.getElementById('pw-input').value === 'clark') {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  } else {
+    document.getElementById('pw-error').textContent = 'Incorrect password.';
+    document.getElementById('pw-input').value = '';
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+</script>
 </body>
 </html>
