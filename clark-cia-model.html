@@ -37,7 +37,16 @@
 </style>
 </head>
 <body>
-
+<div id="password-gate" style="position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;justify-content:center;z-index:9999">
+  <div style="background:#111827;border:1px solid #1e293b;border-radius:12px;padding:40px 48px;text-align:center;width:320px">
+    <h2 style="font-size:16px;font-weight:700;color:#f8fafc;margin-bottom:6px">Clark.com / CIA Model</h2>
+    <p style="font-size:12px;color:#64748b;margin-bottom:24px">Enter password to continue</p>
+    <input type="password" id="pw-input" placeholder="Password" autofocus style="width:100%;background:#0f172a;border:1px solid #475569;border-radius:6px;color:#f1f5f9;font-size:15px;padding:10px 14px;outline:none;text-align:center" />
+    <button onclick="checkPassword()" style="margin-top:14px;width:100%;background:#1e40af;border:none;border-radius:6px;color:#fff;font-size:14px;font-weight:600;padding:10px;cursor:pointer">Enter</button>
+    <div id="pw-error" style="color:#f87171;font-size:12px;margin-top:10px;min-height:16px"></div>
+  </div>
+</div>
+<div id="main-content" style="display:none">
 <div id="header" style="margin-bottom:20px">
   <div style="font-size:11px;letter-spacing:0.15em;color:#64748b;text-transform:uppercase;margin-bottom:4px">Clark.com / CIA Partnership Model</div>
   <h1 style="font-size:22px;font-weight:700;color:#f8fafc">Fee Convergence Analysis: Clark.com vs CIA</h1>
@@ -81,7 +90,18 @@
     <span>Yellow balance = CIA owes Clark · Green balance = CIA is ahead</span>
   </div>
 </div>
-
+<script>
+function checkPassword() {
+  if (document.getElementById('pw-input').value === 'clark') {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  } else {
+    document.getElementById('pw-error').textContent = 'Incorrect password.';
+    document.getElementById('pw-input').value = '';
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+</script>
 <script>
 const NUM_YEARS = 10;
 
@@ -540,5 +560,6 @@ render();
 
 window.addEventListener('resize', () => { initChart(); render(); });
 </script>
+
 </body>
 </html>
